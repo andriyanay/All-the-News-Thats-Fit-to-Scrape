@@ -1,0 +1,26 @@
+body {
+    background: url(../images/background.jpg)
+    no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-attachment: fixed;
+        color: white;
+}
+
+.col-sm-1 {
+    padding-left: 0;
+}
+
+.col-sm-1 button {
+    display: none;
+}
+
+.articleRow:hover .col-sm-1 button {
+    display: block;
+}
+
+#articleId {
+    display: none;
+}

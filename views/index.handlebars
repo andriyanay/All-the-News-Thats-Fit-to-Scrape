@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <h1>News Scraper</h1>
+            <button class="btn btn-danger" id="scrape">Scrape</button>
+        </div>
+        <div class="col-xs-6 text-right">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default" data-link="/">Home</button>
+                <button type="button" class="btn btn-default" data-link="/articles">Articles</button>
+                <button type="button" class="btn btn-default" data-link="/saved">Saved</button>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row">
+        {{#each articles}}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row articleRow">
+                    <div class="col-xs-11">
+                        <h2>{{this.title}}</h2>
+                        <p>{{this.summary}}
+                            <br>
+                            <a href="{{this.link}}">Article Link</a>
+                        </p>
+                    </div>
+                    <div class="col-sm-1">
+                        {{#if this.saved}}
+                        <button class="btn-danger btn favorite" data-id="{{this._id}}" data-click="true">Favorited</button>
+                        {{else}}
+                        <button class="btn-default btn favorite" data-id="{{this._id}}" data-click="false">Favorite</button>
+                        {{/if}}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+</div>
