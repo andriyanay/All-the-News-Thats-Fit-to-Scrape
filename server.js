@@ -29,12 +29,12 @@ var reqTimer = setTimeout(function wakeUp() {
  }, 1200000);
 
 
-// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/news";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 mongoose.Promise = Promise;
-// mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI);
 
-mongoose.connect("mongodb://localhost/newsArticlesDB", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/newsArticlesDB", { useNewUrlParser: true });
 
 
 app.get("/scrape", function (req, res) {
