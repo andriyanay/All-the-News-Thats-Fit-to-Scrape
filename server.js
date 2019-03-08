@@ -21,10 +21,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var reqTimer = setTimeout(function wakeUp() {
+    request("https://thawing-journey-81728.herokuapp.com", function() {
+       console.log("WAKE UP DYNO");
+    });
+    return reqTimer = setTimeout(wakeUp, 1200000);
+ }, 1200000);
+
+
+// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/news";
 
 mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI);
+// mongoose.connect(MONGODB_URI);
+
+mongoose.connect("mongodb://localhost/newsArticlesDB", { useNewUrlParser: true });
+
 
 app.get("/scrape", function (req, res) {
     request("https://www.nytimes.com/section/technology?action=click&pgtype=Homepage&region=TopBar&module=HPMiniNav&contentCollection=Tech&WT.nav=page", function (error, response, html) {
